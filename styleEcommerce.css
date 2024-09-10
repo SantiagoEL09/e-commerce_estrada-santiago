@@ -11,11 +11,25 @@ body{
     box-shadow: 0px 5px 100px 5px #000000;
 }
 
+.navbar_container{
+    display: flex;
+    justify-content: center;
+}
+
+.navbar{
+    margin: 20px;
+    font-size:20px;  
+}
+
+.d-flex, .btn{
+    color: #000000;
+    border-color: #000000;
+}
 .products{
     display:flex;
     justify-content: center;
     align-items: center;
-    padding-top: 70px;
+    margin-top: 45px;
     gap: 15px; 
 }
 
@@ -26,6 +40,7 @@ body{
     align-items: center;
     padding-top: 50px;
     gap: 50px;  
+    margin-bottom: 30px;
 }
 
 .card{
@@ -33,3 +48,22 @@ body{
     border-radius: 10px;
 }
 
+footer{
+    text-align: center;
+    background: url(jpg/bg.jpg);
+    padding:40px;
+    margin-top: 50px;
+}
+
+.banner_logo{
+    margin: 65px;
+    border-radius: 25px;
+    width: 200px;
+    height: 200px;
+    background-color: #B7B5B3; /* Color de fondo inicial */
+    filter: blur(2px); /* Aplicamos un filtro de desenfoque de 5 píxeles */
+}
+
+.copyright{
+    color: whitesmoke;
+}
