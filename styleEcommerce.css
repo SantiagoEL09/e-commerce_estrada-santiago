@@ -1,80 +1,11 @@
-body{
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
     display: flex;
     flex-direction: column;
-    background-color:#E1E0DC;
+    background-color: #E1E0DC;
 }
 
-.tittleInicial{
-    background: black;
-    color: whitesmoke;
-    padding: 40px;
-    text-align: center;
-    text-shadow: 0px 15px 70px #ffffff, 0px -5px 40px #ffffff;
-    box-shadow: 0px 5px 100px 5px #000000;
-}
-
-.navbar_container{
-    display: flex;
-    justify-content: center;
-}
-
-.navbar{
-    margin: 20px;
-    font-size:20px;  
-}
-
-.d-flex, .btn{
-    color: #000000;
-    border-color: #000000;
-}
-.container{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 45px;
-    gap: 15px; 
-}
-
-.container{
-    /* display:inline-block; */
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-    padding-top: 50px;
-    gap: 50px;  
-    margin: 30px 75px;
-}
-
-.card{
-    width: 33.33%;
-    margin: 10px;
-    padding: 10px;
-    border: solid 3px black;
-    border-radius: 15px;
-}
-
-.card:hover{
-    box-shadow: 0px 0px 40px 0.5px black;
-    transition: 0.2s;
-}
-
-.footer{
-    text-align: center;
-    background: url(jpg/bg.jpg);
-    padding:40px;
-    margin-top: 50px;
-}
-
-.banner_logo{
-    margin: 65px;
-    border-radius: 25px;
-    width: 200px;
-    height: 200px;
-    background-color: #B7B5B3; /* Color de fondo inicial */
-    filter: blur(2px); /* Aplicamos un filtro de desenfoque de 5 píxeles */
-}
-
-.copyright{
-    color: whitesmoke;
-}
