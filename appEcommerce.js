@@ -86,13 +86,13 @@ function cards() {
     }
 ]
 
-  document.querySelector("h2").innerText = "Productos destacados";
+  
 
  /*  let array_cards = []; */
 
    let array_cards = data.map((product) => {
     return `<div class="card">
-        <img src="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${product.img}.jpg"     class="card-img-top" alt="logoPrincipal ${product.title}">
+        <img src="${product.img}" class="card-img-top" alt="logoPrincipal ${product.title}">
         <div class="card-body">
         <h4 class="card-title">${product.title}</h4>  
         <p class="card-text">${product.detail}</p>

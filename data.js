@@ -1,3 +1,6 @@
+/* 
+Comprender como puedo importar los datos de data en los demas archivos para evitar re-escribir la misma info en los demas y poder usarla. 
+*/
 const data = [
     {
         id: 1,

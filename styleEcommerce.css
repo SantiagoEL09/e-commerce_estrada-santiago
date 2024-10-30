@@ -1,4 +1,6 @@
-html, body {
+/* Estilos globales */
+html,
+body {
     height: 100%;
     margin: 0;
 }
@@ -6,6 +8,300 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #E1E0DC;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
 }
 
+/* Contenedor principal */
+.container-fluid.p-5,
+.container.my-5 {
+    flex: 1;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #12643e;
+}
+
+/* Estilos para el banner principal */
+.container-fluid.p-5 {
+    background: linear-gradient(45deg, #198754, #12643e);
+    background-image: url("https://images.unsplash.com/photo-1723891010863-b7da7b90ed46?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container-fluid h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.container-fluid p {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.container {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    flex-wrap: wrap;
+}
+/* Estilos para las tarjetas de productos */
+.card {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    max-width: 650px;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.card-text {
+    color: #6c757d;
+}
+
+.btn-success {
+    background-color: #198754;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #13663f;
+}
+
+/* Contenedor para la sección de categorías y productos */
+.category-products-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 0px 15px;
+}
+
+/* Barra lateral de categorías */
+.category-sidebar {
+    width: 105px;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category-sidebar .btn {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Contenedor de productos */
+.products-container {
+    flex-grow: 1;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Alineación de tarjetas de productos */
+.products-container .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+/* Estilos para las tarjetas de productos */
+.products-container .col-lg-4 {
+    flex: 1 1 calc(33.333% - 20px); /* 3 tarjetas por fila */
+    max-width: calc(33.333% - 20px); /* Ajuste máximo */
+}
+
+
+/* Estilos responsivos para la sección de categorías y productos */
+@media (max-width: 768px) {
+    .category-products-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category-sidebar {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .products-container .col-lg-4 {
+        flex: 1 1 100%; /* Tarjetas a una por fila en pantallas pequeñas */
+        max-width: 100%;
+    }
+}
+
+
+/* Estilos para la sección de detalles del producto */
+.product-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail-container img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.product-detail-content {
+    text-align: center;
+}
+
+.product-detail-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #12643e;
+}
+
+.product-detail-content p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.product-detail-content strong {
+    display: block;
+    font-size: 1.5rem;
+    color: #198754;
+    margin-bottom: 1rem;
+}
+
+.product-detail-content .btn-success {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    background-color: #198754;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.product-detail-content .btn-success:hover {
+    background-color: #13663f;
+}
+
+/* Estilos para el stock disponible */
+.product-detail-stock {
+    font-size: 1.1rem;
+    color: #198754;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilos para la sección de detalles de productos en pantallas pequeñas */
+@media (max-width: 768px) {
+    .product-detail-container {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .product-detail-content h1 {
+        font-size: 1.75rem;
+    }
+
+    .product-detail-content p {
+        font-size: 1rem;
+    }
+
+    .product-detail-content strong {
+        font-size: 1.25rem;
+    }
+
+    .product-detail-content .btn-success {
+        font-size: 1rem;
+    }
+}
+
+/* Estilos para el pie de página */
+footer {
+    color: #fff;
+}
+
+footer h5 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #10c64d;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer ul li a {
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+
+footer .p-3 {
+    background-color: #12643e;
+    font-size: 0.875rem;
+    color: #dde0e4;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .container-fluid h1 {
+        font-size: 2rem;
+    }
+
+    .container-fluid p {
+        font-size: 1rem;
+    }
+}

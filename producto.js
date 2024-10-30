@@ -89,17 +89,16 @@ const productFilter = data.find((product) => product.id === productId);
 if (productFilter) {
     const etiquetas = 
     `<div class="card">
-        <img src="https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/${productFilter.img}.jpg"     class="card-img-top" alt="logoPrincipal ${productFilter.title}">
+        <img src="${productFilter.img}"     class="card-img-top" alt="logoPrincipal ${productFilter.title}">
         <div class="card-body">
         <h4 class="card-title">${productFilter.title}</h4>  
         <p class="card-text">${productFilter.detail}</p>
         <h5>${productFilter.price}</h5>
         <p>Stock disponible: ${productFilter.stock}
-        <a href="producto.html?prod=${productFilter.id}" class="btn btn-primary">Ver más</a>  </div>
+        <a href="producto.html?prod=${productFilter.id}" class="btn btn-primary">Comprar</a>
       </div>`;
 
-    const main = document.querySelector("main");
-    main.innerHTML = etiquetas;
+    const main = document.querySelector("main").innerHTML = etiquetas;
 }
 /* class productos {
     constructor (titulo, detalle, precio, stock, imagen) {
