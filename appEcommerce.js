@@ -85,9 +85,6 @@ function cards() {
         category: "Juegos"
     }
 ]
-
-  
-
  /*  let array_cards = []; */
 
    let array_cards = data.map((product) => {
