@@ -1,7 +1,7 @@
 function linksNavBar(){
     let links = [
         {
-            texto: "Inicio", href: "indexEcommerce.html"
+            texto: "Inicio", href: "index.html"
         },
         {
             texto: "Productos", href: "producto.html"
@@ -11,7 +11,7 @@ function linksNavBar(){
         }
     ]
     
-    const header = document.querySelector("header");
+    const nav = document.querySelector(".navBar");
     
     let menu = []
     
@@ -19,5 +19,5 @@ function linksNavBar(){
             menu.push(`<a class="nav-item" href=${link.href}>${link.texto}</a>`)
         }
     
-    header.innerHTML = menu.join(" ");
+    nav.innerHTML = menu.join(" ");
 }linksNavBar();

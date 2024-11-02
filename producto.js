@@ -1,8 +1,8 @@
-
+/* import data from "./data"; */
 const data = [
     {
         id: 1,
-        title: "Consola PlayStation 5® Digital PRO 2TB",
+        title: "Consola PlayStation 5",
         detail: "La PlayStation 5 Pro te ofrece una experiencia de juego inigualable. Con un hardware más potente, podrás disfrutar de gráficos ultra realistas gracias al trazado de rayos avanzado, que simula la iluminación natural para crear imágenes más detalladas y realistas. Además, la superresolución espectral te permite jugar en 4K con una nitidez asombrosa. Con un almacenamiento SSD de 2 TB, tendrás espacio de sobra para todos tus juegos.",
         img: "https://cosonyb2c.vtexassets.com/arquivos/ids/360392-1600-auto?v=638645914784400000&width=1600&height=auto&aspect=true",
         price: "$ 4.199.711",
@@ -10,7 +10,7 @@ const data = [
         category: "PlayStation",
     }, {
         id: 2,
-        title: "PlayStation®5 Slim Digital- Ratchet & Clank: Rift Apart y Returna",
+        title: "PlayStation 5 Slim Digital",
         detail: "El paquete PlayStation 5 Slim Digital, Ratchet & Clank: Rift Apart y Returnal es la combinación perfecta para los gamers que buscan lo último en tecnología y entretenimiento. Esta edición digital de la PS5, más compacta y sin unidad de disco, te permite acceder a una amplia biblioteca de juegos a través de PlayStation Store. Disfruta de una experiencia de juego inmersiva con cargas ultrarrápidas gracias a su SSD, y siente cada detalle con la retroalimentación háptica y los gatillos adaptativos. Además, los juegos incluidos, Ratchet & Clank: Rift Apart y Returnal, te ofrecen aventuras emocionantes y gráficas de última generación.",
         img: "https://cosonyb2c.vtexassets.com/arquivos/ids/358600-1600-auto?v=638460886356630000&width=1600&height=auto&aspect=true",
         price: "$ 2.498.950",
@@ -50,7 +50,7 @@ const data = [
         category: "Juegos"
     }, {
         id: 7,
-        title: "Gran Turismo® 7",
+        title: "Gran Turismo 7",
         detail: "Gran Turismo 7 combina las mejores funciones del simulador de conducción real. Si eres piloto competitivo o casual, coleccionista, aficionado a las modificaciones, diseñador de apariencias o fotógrafo, encuentra tu camino con una colección impresionante de modos de juego, incluidos los favoritos de los fanáticos, como Campaña de GT, Arcade y Escuela de manejo.",
         img: "https://phantom-marca.unidadeditorial.es/c222d9def5df356e4fb6771adc6321f0/resize/1200/f/webp/assets/multimedia/imagenes/2024/03/27/17115561896248.jpg",
         price: "$ 69.99",
@@ -82,14 +82,15 @@ const data = [
         category: "Juegos"
     }
 ]
-function filterProductById(){
-    const productId = Number(window.location.search.split("=")[1]);
-    const productFilter = data.find((product) => product.id === productId);
 
-    if (productFilter) {
-        const etiquetas = 
-        `<div class="card">
-            <img src="${productFilter.img}"     class="card-img-top" alt="logoPrincipal ${productFilter.title}">
+
+
+let productId = Number(window.location.search.split("=")[1]);
+let productFilter = data.find((product) => product.id === productId);
+
+if (productFilter){
+    let etiquetas = `<div class="card">
+            <img src="${productFilter.img}" class="card-img-top" alt="logoPrincipal ${productFilter.title}">
             <div class="card-body">
             <h4 class="card-title">${productFilter.title}</h4>  
             <p class="card-text">${productFilter.detail}</p>
@@ -98,9 +99,9 @@ function filterProductById(){
             <a href="producto.html?prod=${productFilter.id}" class="btn btn-primary">Comprar</a>
         </div>`;
 
-    const main = document.querySelector("main").innerHTML = etiquetas;
-}
-}filterProductById(); 
+        document.querySelector("section").innerHTML = etiquetas;
+} 
+
 
 /* class productos {
     constructor (titulo, detalle, precio, stock, imagen) {
