@@ -86,6 +86,12 @@ const data = [
   }
 ]
 
+const input = document.querySelector("#input");
+const searchButton = document.querySelector("#searchProduct");
+const resetButton = document.querySelector("#resetProducts");
+const allButton = document.querySelector("#all");
+const categoryButtons = document.querySelectorAll(".categoryButton");
+
 let section = document.querySelector("section");
 let arrayCards = data.map((product) => `<div class="card">
           <img src="${product.img}" class="card-img-top" alt="logoPrincipal ${product.title}">
@@ -98,23 +104,19 @@ let arrayCards = data.map((product) => `<div class="card">
         </div>`)
 section.innerHTML = arrayCards.join("");
 
-const input = document.querySelector("#input");
-const searchButton = document.querySelector("#searchProduct");
-const resetButton = document.querySelector("#resetProducts");
-
 const filterCards = () => {
   const filterData = data.filter(
-    (product) => product.title === input.value);
+    (product) => product.title.toLowerCase() === input.value.toLowerCase());
 
     if (filterData.length === 1) {
-      arrayCards = filterData.map((item) => `<div class="card">
-          <img src="${item.img}" class="card-img-top" alt="logoPrincipal ${item.title}">
+      arrayCards = filterData.map((filter) => `<div class="card">
+          <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
           <div class="card-body">
-          <h4 class="card-title">${item.title}</h4>  
-          <p class="card-text">${item.detail}</p>
-          <h5>${item.price}</h5>
-          <p>Stock disponible: ${item.stock}
-          <a href="producto.html?prod=${item.id}" class="btn btn-primary">Ver más</a>  </div>
+          <h4 class="card-title">${filter.title}</h4>  
+          <p class="card-text">${filter.detail}</p>
+          <h5>${filter.price}</h5>
+          <p>Stock disponible: ${filter.stock}
+          <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>  </div>
         </div>`);
         /* document.querySelector("section").innerHTML = etiquetas;
         console.log(filtered) */
@@ -139,9 +141,35 @@ const resetInput = () => {
 section.innerHTML = arrayCards.join("");
 }
 
+const filterCategory = (category) => {
+  const filterData = data.filter(
+    (product) => product.category === category
+  )
+  arrayCards = filterData.map(
+    (filter) => 
+      `<div class="card">
+          <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
+          <div class="card-body">
+          <h4 class="card-title">${filter.title}</h4>  
+          <p class="card-text">${filter.detail}</p>
+          <h5>${filter.price}</h5>
+          <p>Stock disponible: ${filter.stock}
+          <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>  </div>
+        </div>`
+  )
+  section.innerHTML = arrayCards.join("");
+}
+
 searchButton.addEventListener("click", filterCards);
 resetButton.addEventListener("click", resetInput);
+allButton.addEventListener("click", resetInput)
 
+for (let i in categoryButtons){
+  categoryButtons[i].addEventListener("click", (event) => {
+    const category = event.target.getAttribute("value");
+    filterCategory(category);
+  })
+}
 
 /* function cards() {
 
