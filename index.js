@@ -96,11 +96,10 @@ let section = document.querySelector("section");
 let arrayCards = data.map((product) => `<div class="card">
           <img src="${product.img}" class="card-img-top" alt="logoPrincipal ${product.title}">
           <div class="card-body">
-          <h4 class="card-title">${product.title}</h4>  
-          <p class="card-text">${product.detail}</p>
-          <h5>${product.price}</h5>
-          <p>Stock disponible: ${product.stock}
-          <a href="producto.html?prod=${product.id}" class="btn btn-primary">Ver más</a>  </div>
+            <h4 class="card-title">${product.title}</h4>  
+            
+            <a href="producto.html?prod=${product.id}" class="btn btn-primary">Ver más</a>  
+          </div>
         </div>`)
 section.innerHTML = arrayCards.join("");
 
@@ -109,22 +108,23 @@ const filterCards = () => {
     (product) => product.title.toLowerCase() === input.value.toLowerCase());
 
     if (filterData.length === 1) {
-      arrayCards = filterData.map((filter) => `<div class="card">
+      arrayCards = filterData.map((filter) =>
+         `<div class="cardProduct">
           <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
-          <div class="card-body">
-          <h4 class="card-title">${filter.title}</h4>  
-          <p class="card-text">${filter.detail}</p>
-          <h5>${filter.price}</h5>
-          <p>Stock disponible: ${filter.stock}
-          <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>  </div>
+          <div class="detailProduct">
+            <h4 class="card-title">${filter.title}</h4>  
+            <p class="card-text">${filter.detail}</p>
+            <h5>${filter.price}</h5>
+            <p>Stock disponible: ${filter.stock}
+            <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Comprar</a>  
+          </div>
         </div>`);
         /* document.querySelector("section").innerHTML = etiquetas;
         console.log(filtered) */
         section.innerHTML = arrayCards.join("");
     } else {
       section.innerHTML = `No encontramos el producto: ${input.value}. Porfavor ingresa un nombre de producto valido`;
-    }
-    
+    }    
 }
 
 const resetInput = () => {
@@ -132,11 +132,10 @@ const resetInput = () => {
   let arrayCards = data.map((product) => `<div class="card">
   <img src="${product.img}" class="card-img-top" alt="logoPrincipal ${product.title}">
   <div class="card-body">
-  <h4 class="card-title">${product.title}</h4>  
-  <p class="card-text">${product.detail}</p>
-  <h5>${product.price}</h5>
-  <p>Stock disponible: ${product.stock}
-  <a href="producto.html?prod=${product.id}" class="btn btn-primary">Ver más</a>  </div>
+    <h4 class="card-title">${product.title}</h4>  
+    
+    <a href="producto.html?prod=${product.id}" class="btn btn-primary">Ver más</a>  
+  </div>
 </div>`)
 section.innerHTML = arrayCards.join("");
 }
@@ -150,11 +149,10 @@ const filterCategory = (category) => {
       `<div class="card">
           <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
           <div class="card-body">
-          <h4 class="card-title">${filter.title}</h4>  
-          <p class="card-text">${filter.detail}</p>
-          <h5>${filter.price}</h5>
-          <p>Stock disponible: ${filter.stock}
-          <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>  </div>
+            <h4 class="card-title">${filter.title}</h4>  
+            
+            <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>  
+          </div>
         </div>`
   )
   section.innerHTML = arrayCards.join("");

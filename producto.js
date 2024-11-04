@@ -83,15 +83,14 @@ const data = [
     }
 ]
 
-
-
 let productId = Number(window.location.search.split("=")[1]);
 let productFilter = data.find((product) => product.id === productId);
 
 if (productFilter){
-    let etiquetas = `<div class="card">
+    let etiquetas = 
+    `<div class="cardProduct">
             <img src="${productFilter.img}" class="card-img-top" alt="logoPrincipal ${productFilter.title}">
-            <div class="card-body">
+        <div class="detailProduct">
             <h4 class="card-title">${productFilter.title}</h4>  
             <p class="card-text">${productFilter.detail}</p>
             <h5>${productFilter.price}</h5>

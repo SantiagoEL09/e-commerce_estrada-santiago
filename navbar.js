@@ -11,7 +11,7 @@ function linksNavBar(){
         }
     ]
     
-    const nav = document.querySelector(".navBar");
+    const nav = document.querySelector(".navbar");
     
     let menu = []
     
