@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script src="../js/userLogged.js"></script>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link
@@ -18,17 +19,18 @@
         <title>Document</title>
     </head>
     <body>
-        <form>
+        <form id="formLogin">
             <div class="mb-3">
                 <label class="form-label">Email address</label>
-                <input type="email" class="email form-control" id="email"/>
+                <input type="email" class="email form-control" name="email" id="email"/>
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" class=" form-control" id="password"/>
+                <input type="password" class=" form-control" name="password" id="password"/>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <script src="../js/data.js"></script>
         <script src="../js/login.js">
 
 /* const userLogin = {email: "reposado@gmail.com", password: "reposadito11"}

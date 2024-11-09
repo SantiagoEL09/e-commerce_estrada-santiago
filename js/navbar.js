@@ -1,23 +1,70 @@
-function linksNavBar(){
-    let links = [
+const infoUser = {
+    email: "reposado@gmail.com",
+    password: "reposadito11"
+}
+const menus = [
         {
-            texto: "Inicio", href: "index.html"
+            name: "Inicio",
+            href: "./index.html", 
+            icon: "bx bx-home-alt-2", 
+            id: ""
         },
         {
-            texto: "Productos", href: "producto.html"
+            name: "Productos", 
+            href: "producto.html", 
+            icon: "fi fi-br-supplier-alt", 
+            id: ""
         },
         {
-            texto: "Contacto", href: "#"
-        }
+            name: "Contacto", 
+            href: "#", 
+            icon: "fi fi-br-headset", 
+            id: ""
+        },
+        {
+            name: `${localStorage.getItem("email")}`, 
+            href: "#", 
+            icon: "fi fi-sr-user", 
+            id: ""
+        },
+        {
+            name: "Login", 
+            href: "./login.html", 
+            icon: "fi fi-br-sign-in-alt", 
+            id: ""
+        },
+        {
+            name: `${localStorage.getItem("quantity")}`, 
+            href: "#", 
+            icon: "fi fi-rr-shopping-cart", 
+            id: "cart"
+        },
+        
+
     ]
     
-    const nav = document.querySelector(".navbar");
+const navLeft = document.querySelector("#navbarLeft");
+const navRight = document.querySelector("#navbarRight");
+
+let menu = []
+
+    for (let item of menus) {
+        menu.push(
+            `<li class="nav-item">
+                <a class="nav-link" id="${item.id}"aria-current="page" href="${item.href}">
+                    <i class='${item.icon}'></i>
+                ${item.name}</a>
+            </li>`
+        )
+    }; 
     
-    let menu = []
+
+    /* Revisar metodos Arrays, que otros metodos aparte del "slice" se pueden usar */
+navLeft.innerHTML = menu.slice(0, 3).join(" ");
+localStorage.getItem("email") ? navRight.innerHTML = `
+    ${menu[3]}${menu[5]} <span onclick="logout()" id="logout"> Cerrar Sesión </span>` : navRight.innerHTML = menu[4];
     
-        for (let link of links) {
-            menu.push(`<a class="nav-item" href=${link.href}>${link.texto}</a>`)
-        }
-    
-    nav.innerHTML = menu.join(" ");
-}linksNavBar();
+function logout(){
+    localStorage.clear();
+    location.href = "./index.html";
+}

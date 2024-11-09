@@ -11,7 +11,6 @@ form.addEventListener("submit", (event) => {
     }
 })
  */
-
 const infoUser = {
     email: "reposado@gmail.com",
     password: "reposadito11"
@@ -36,11 +35,3 @@ const loginUser = (event) => {
      }     
 };
 form.addEventListener("submit", loginUser)
-
-if (localStorage.getItem("email") && localStorage.getItem("password")){
-    window.location.href = "./index.html"
-} /* else {
-    window.location.href = "./login.html"
-} */
-
-
