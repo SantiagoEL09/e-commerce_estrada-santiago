@@ -153,13 +153,25 @@ if (productFilter){
             <h4 class="card-title">${productFilter.title}</h4>  
             <p class="card-text">${productFilter.detail}</p>
             <h5>${productFilter.price}</h5>
-            <p>Stock disponible: ${productFilter.stock}
-            <p>Categoría: ${productFilter.category}
-            <a href="producto.html?prod=${productFilter.id}" class="btn btn-primary">Comprar</a>
+            <p>Stock disponible: ${productFilter.stock}</p>
+            <p>Categoría: ${productFilter.category}</p>
+            ${productFilter.category === "Juegos" ? ` ` : `<p>Marca: ${productFilter.brand}</p></p>`}
+            <div>
+                ${localStorage.getItem("email") ? `
+                    <div class="input-group">
+                        <button class="btn btn-dark" type="button">-</button>
+                        <input type="number" class="form-control" value="1" id="counter" />
+                        <button class="btn btn-dark" type="button">+</button>
+                    </div>
+                    <button class="btn btn-primary">Comprar</button>` : `
+                    <button class="login" onclick="location.href='./login.html'">Iniciar sesión para comprar</button>`
+                }
+            </div>            
         </div>`;
-
         document.querySelector("section").innerHTML = etiquetas;
 } 
+
+
 
 
 /* class productos {

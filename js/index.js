@@ -47,7 +47,7 @@ const data = [
       price: "$ 69.99",
       stock: 25,
       category: "Juegos",
-      
+      brand: " xxx",
   }, {
       id: 6,
       title: "God of War Ragnarök",
@@ -56,7 +56,7 @@ const data = [
       price: "$ 69.99",
       stock: 25,
       category: "Juegos",
-      
+      brand: " ",
   }, {
       id: 7,
       title: "Gran Turismo 7",
@@ -65,7 +65,7 @@ const data = [
       price: "$ 69.99",
       stock: 25,
       category: "Juegos",
-      
+      brand: " ",
   }, {
       id: 8,
       title: "Call of Duty: Black Ops 6",
@@ -74,7 +74,7 @@ const data = [
       price: "$ 269.999",
       stock: 25,
       category: "Juegos",
-      
+      brand: " ",
   }, {
       id: 9,
       title: "Destiny 2",
@@ -83,7 +83,7 @@ const data = [
       price: "$ 199.900",
       stock: 25,
       category: "Juegos",
-      
+      brand: " ",
   }, {
       id: 10,
       title: "EA SPORTS FC 25 ",
@@ -92,7 +92,7 @@ const data = [
       price: "$ 279.999",
       stock: 25,
       category: "Juegos",
-      
+      brand: " ",
   }, {
       id: 11,
       title: "PS5 PlayStation Portal Remote Player",
@@ -152,33 +152,38 @@ const allButton = document.querySelector("#all");
 const categoryButtons = document.querySelectorAll(".categoryButton");
 
 let section = document.querySelector("section");
-let arrayCards = data.map((product) => `<div class="card">
+let arrayCards = data.map((product) => `
+        <div class="card">
           <img src="${product.img}" class="card-img-top" alt="logoPrincipal ${product.title}">
           <div class="card-body">
             <h4 class="card-title">${product.title}</h4>  
-            <p>Categoría: ${product.category}
+            <p>Categoría: ${product.category}</p>
             <a href="producto.html?prod=${product.id}" class="btn btn-primary">Ver más</a>  
           </div>
         </div>`)
 section.innerHTML = arrayCards.join("");
-
-const filterCards = () => {
+/* BUSCADOR Y CATEGORIAS */
+const searchProduct = () => {
   const filterData = data.filter(
     (product) => product.title.toLowerCase() === input.value.toLowerCase());
 
     if (filterData.length === 1) {
-      arrayCards = filterData.map((filter) =>
-         `<div class="cardProduct">
-          <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
-          <div class="detailProduct">
-            <h4 class="card-title">${filter.title}</h4>  
-            <p class="card-text">${filter.detail}</p>
-            <h5>${filter.price}</h5>
-            <p>Stock disponible: ${filter.stock}
-            <p>Marca: ${filter.brand}
-            <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Comprar</a>  
-          </div>
-        </div>`);
+      arrayCards = filterData.map((filter) => {
+        const brandElement = filter.category === "Juegos" ? "" : `<p>Marca: ${filter.brand}</p>`;
+        return `
+        <div class="cardProduct">
+            <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
+            <div class="detailProduct">
+              <h4 class="card-title">${filter.title}</h4>  
+              <p class="card-text">${filter.detail}</p>
+              <h5>${filter.price}</h5>
+              <p>Stock disponible: ${filter.stock}</p>
+              ${brandElement}
+              <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Comprar</a>  
+            </div>
+        </div>`;
+      }
+    );
         /* document.querySelector("section").innerHTML = etiquetas;
         console.log(filtered) */
         section.innerHTML = arrayCards.join("");
@@ -202,26 +207,37 @@ section.innerHTML = arrayCards.join("");
 
 const filterCategory = (category) => {
   const filterData = data.filter(
-    (product) => product.category === category
-  )
-  arrayCards = filterData.map((filter) => {
-      const brandElement = filter.category === "Juegos" ? "" : `<p>Marca: ${filter.brand}`;
-      return `
-        <div class="card">
-          <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
-          <div class="card-body">
-            <h4 class="card-title">${filter.title}</h4>
-            <p>Categoría: ${filter.category}</p>
-            ${brandElement}
-            <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>
+    (product) => product.category === category)
+      arrayCards = filterData.map((filter) => {
+        const brandElement = filter.category === "Juegos" ? "" : `<p>Marca: ${filter.brand}</p>`;
+        return `
+          <div class="card">
+            <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
+            <div class="card-body">
+              <h4 class="card-title">${filter.title}</h4>
+              <p>Categoría: ${filter.category}</p>
+              ${brandElement}
+              <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>
+            </div>
           </div>
-        </div>
-      `;
-    });
-  
-    section.innerHTML = arrayCards.join("");
-  };
+        `;
+      }
+    );
+section.innerHTML = arrayCards.join("");
+};
 
+searchButton.addEventListener("click", searchProduct);
+resetButton.addEventListener("click", resetInput);
+allButton.addEventListener("click", resetInput)
+
+for (let i in categoryButtons){
+  categoryButtons[i].addEventListener("click", (event) => {
+    const category = event.target.getAttribute("value");
+    filterCategory(category);
+  })
+}
+
+/* FIN BUSCADOR Y CATEGORIAS */
     /* 
       `<div class="card">
           <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
@@ -236,16 +252,9 @@ const filterCategory = (category) => {
   section.innerHTML = arrayCards.join("");
 } */
 
-searchButton.addEventListener("click", filterCards);
-resetButton.addEventListener("click", resetInput);
-allButton.addEventListener("click", resetInput)
 
-for (let i in categoryButtons){
-  categoryButtons[i].addEventListener("click", (event) => {
-    const category = event.target.getAttribute("value");
-    filterCategory(category);
-  })
-}
+
+
 
 /* function cards() {
 

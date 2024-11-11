@@ -43,7 +43,7 @@ const data = [
         price: "$ 69.99",
         stock: 25,
         category: "Juegos",
-        
+        brand: " ",
     }, {
         id: 6,
         title: "God of War Ragnarök",
@@ -52,7 +52,7 @@ const data = [
         price: "$ 69.99",
         stock: 25,
         category: "Juegos",
-        
+        brand: " ",
     }, {
         id: 7,
         title: "Gran Turismo 7",
@@ -61,7 +61,7 @@ const data = [
         price: "$ 69.99",
         stock: 25,
         category: "Juegos",
-        
+        brand: " ",
     }, {
         id: 8,
         title: "Call of Duty: Black Ops 6",
@@ -70,7 +70,7 @@ const data = [
         price: "$ 269.999",
         stock: 25,
         category: "Juegos",
-        
+        brand: " ",
     }, {
         id: 9,
         title: "Destiny 2",
@@ -79,7 +79,7 @@ const data = [
         price: "$ 199.900",
         stock: 25,
         category: "Juegos",
-        
+        brand: " ",
     }, {
         id: 10,
         title: "EA SPORTS FC 25 ",
@@ -88,7 +88,7 @@ const data = [
         price: "$ 279.999",
         stock: 25,
         category: "Juegos",
-        
+        brand: " ",
     }, {
         id: 11,
         title: "PS5 PlayStation Portal Remote Player",
@@ -141,5 +141,11 @@ const data = [
     }
 ]
 
-export default data;
+const infoUser = {
+    email: "reposado@gmail.com",
+    password: "reposadito11"
+}
+
+export default data; infoUser;
+
 

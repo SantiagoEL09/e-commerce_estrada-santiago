@@ -11,13 +11,13 @@ const menus = [
         },
         {
             name: "Productos", 
-            href: "producto.html", 
+            href: "./producto.html", 
             icon: "fi fi-br-supplier-alt", 
             id: ""
         },
         {
             name: "Contacto", 
-            href: "#", 
+            href: "https://www.guayerd.com/es/", 
             icon: "fi fi-br-headset", 
             id: ""
         },
@@ -39,8 +39,6 @@ const menus = [
             icon: "fi fi-rr-shopping-cart", 
             id: "cart"
         },
-        
-
     ]
     
 const navLeft = document.querySelector("#navbarLeft");
@@ -58,7 +56,6 @@ let menu = []
         )
     }; 
     
-
     /* Revisar metodos Arrays, que otros metodos aparte del "slice" se pueden usar */
 navLeft.innerHTML = menu.slice(0, 3).join(" ");
 localStorage.getItem("email") ? navRight.innerHTML = `
