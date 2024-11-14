@@ -11,10 +11,10 @@ form.addEventListener("submit", (event) => {
     }
 })
  */
-const infoUser = {
+/* const infoUser = {
     email: "reposado@gmail.com",
     password: "reposadito11"
-}
+} */
 
 const form = document.querySelector("form");
 
@@ -27,6 +27,8 @@ const loginUser = (event) => {
     if (infoUser.email === email && infoUser.password === password){
         localStorage.setItem("email", email);
         localStorage.setItem("password", password);
+        localStorage.setItem("cart", JSON.stringify([]));
+        localStorage.setItem("quantity", "0")
         window.location.href = "./index.html"
      } else {
         alert("Usuario o contraseña incorrecto, porfavor intente nuevamente");
