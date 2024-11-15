@@ -179,7 +179,7 @@ const menus = [
     },
     {
         name: `${localStorage.getItem("quantity")}`, 
-        href: "#", 
+        href: "./cart.html", 
         icon: "fi fi-rr-shopping-cart", 
         id: "quantity"
     },

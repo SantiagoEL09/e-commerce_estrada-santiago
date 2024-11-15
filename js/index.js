@@ -150,9 +150,10 @@ const searchButton = document.querySelector("#searchProduct");
 const resetButton = document.querySelector("#resetProducts");
 const allButton = document.querySelector("#all");
 const categoryButtons = document.querySelectorAll(".categoryButton");
+const section = document.querySelector("section");
 
-let section = document.querySelector("section");
-let arrayCards = data.map((product) => `
+function arrayProduct() {
+  const arrayCards = data.map((product) => `
         <div class="card">
           <img src="${product.img}" class="card-img-top" alt="logoPrincipal ${product.title}">
           <div class="card-body">
@@ -162,6 +163,10 @@ let arrayCards = data.map((product) => `
           </div>
         </div>`)
 section.innerHTML = arrayCards.join("");
+}arrayProduct()
+
+
+
 /* BUSCADOR Y CATEGORIAS */
 const searchProduct = () => {
   const filterData = data.filter(
@@ -195,7 +200,7 @@ const searchProduct = () => {
 const resetInput = () => {
   input.value = "";
   let arrayCards = data.map((product) => `<div class="card">
-  <img src="${product.img}" class="card-img-top" alt="logoPrincipal ${product.title}">
+  <img src="${product.img}" class="card-img-top" alt="logoPrincipal ${product.title}"/>
   <div class="card-body">
     <h4 class="card-title">${product.title}</h4>  
     <p>Categoría: ${product.category}

@@ -14,9 +14,63 @@ body {
 
 
 /* Estilos para la barra de navegación */
-.navbar {
-    background-color: #B6B6B3;    
-}
+/* Estilos generales para el navbar */
+nav {
+    display: flex; /* Hace que los elementos hijos se dispongan en una línea */
+    justify-content: space-between; /* Alinea los elementos hacia los extremos */
+    align-items: center; /* Centra verticalmente los elementos */
+    background-color: #f0f0f0; /* Color de fondo del navbar */
+    padding: 10px; /* Espacio interno del navbar */
+  }
+  
+  #navbarLeft{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none; /* Elimina los marcadores de lista */
+    padding: 0;
+    margin: 30px; /* Elimina el padding por defecto de las listas */
+  }
+
+  #navbarRight{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none; /* Elimina los marcadores de lista */
+    padding: 0;
+    margin: 30px; /* Elimina el padding por defecto de las listas */
+  }
+  /* Estilos para los elementos del menú */
+  .nav-item {
+    list-style: none; /* Quita los marcadores de lista */
+    margin: 0 10px; /* Espacio entre elementos */
+  }
+  
+  .nav-link {
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    color: #333; /* Color del texto de los enlaces */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold; /* Fuente en negrita */
+  }
+  
+  /* Estilos para el icono del carrito */
+  .nav-link img {
+    height: 20px; /* Tamaño del icono del carrito */
+    margin-left: 5px; /* Espacio entre el texto y el icono */
+  }
+  
+  /* Estilos para el botón de cerrar sesión */
+  #logout {
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    color: #f00; /* Color del texto del botón */
+  }
+  
+  /* Estilos para el usuario logeado */
+  /* Aquí puedes personalizar el estilo cuando un usuario está logeado,
+     por ejemplo, cambiando el color de fondo o la fuente */
+  .logged-in {
+    /* Tus estilos personalizados aquí */
+  }
 
 /* Estilos para el banner principal */
 .banner {

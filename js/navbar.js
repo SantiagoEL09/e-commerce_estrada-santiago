@@ -21,8 +21,15 @@ let menu = []
     
     /* Revisar metodos Arrays, que otros metodos aparte del "slice" se pueden usar */
 navLeft.innerHTML = menu.slice(0, 3).join(" ");
-localStorage.getItem("email") ? navRight.innerHTML = `<span>
-    Bienvenido, ${menu[3]} <img height="25" src="../jpg/cart.png" alt="Comprar" /><b></b></span> ${menu[5]} <span onclick="logout()" id="logout"> Cerrar Sesión </span>` : navRight.innerHTML = menu[4];
+localStorage.getItem("email") ? navRight.innerHTML = `
+            <span class="nav-item">
+                <a class="nav-link" id="${item.id}"aria-current="page" href="${item.href}">
+                    <p class='${item.icon}'></p>
+                ${item.name}</a>
+            </span>`
+
+
+`Bienvenido, ${menu[3].split("@")[0]} <img height="25" src="../jpg/cart.png" alt="Comprar"> ${menu[5]}</href=>  <aonclick="logout()" id="logout"> Cerrar Sesión` : navRight.innerHTML = menu[4];
     
 function logout(){
     localStorage.clear();
