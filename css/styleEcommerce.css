@@ -115,7 +115,7 @@ h1 {
     align-items: center;
 }
 
-.button, .searchButton, .resetButton {
+.button, .searchButton, .resetButton, .input {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -129,6 +129,10 @@ h1 {
 .button:hover {
     background-color: #dedede;
     box-shadow: 0px 2px 5px rgba(1, 1, 103, 0.5);
+}
+
+.input:hover {
+  box-shadow: 0px 2px 5px rgba(1, 1, 103, 0.5);
 }
 .resetButton:hover {
     background-color: #ff000090;

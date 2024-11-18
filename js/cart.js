@@ -32,6 +32,11 @@ function getCart(cards) {
                                 <h5>USD $${card.product.price * card.quantity}</h5>
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <div class="mt-3">
+                                <p class="text-muted mb-2" onclick="removeItem(${card.product.id})">Eliminar</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,3 +53,25 @@ function total(cards) {
         acumulado + actual.product.price * actual.quantity, 0) : 0
         cartTotal.innerText = "USD $" + total
 } total(JSON.parse(localStorage.getItem("cart")))
+
+function clearCart() {
+    /* let quantityTag = document.querySelector("#quantity")
+    quantityTag.innerText = "0" */
+    localStorage.setItem("cart", JSON.stringify([]))
+    getCart([])
+    total([])
+}
+
+function removeItem(id) {
+    const cards = JSON.parse(localStorage.getItem("cart"))
+    const newCards = cards.filter(card => card.product.id !== id)
+    localStorage.setItem("cart", JSON.stringify(newCards))
+
+    getCart(newCards)
+    total(newCards)
+
+    let quantity = newCards.reduce((acumulado, actual) => acumulado + actual.quantity, 0)
+    localStorage.setItem("quantity", quantity)
+    /* const quantityTag = document.querySelector("#quantity")
+    quantityTag.innerText = quantity */
+}

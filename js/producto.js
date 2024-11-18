@@ -75,8 +75,12 @@ if (existedId) {
     let quantity = cart.reduce((acumulado, actual) => acumulado + actual.quantity, 0)
     localStorage.setItem("quantity", quantity)
     const quantityTag = document.querySelector("#quantity")
-    quantityTag.innerText = quantity
+    quantityTag.innerHTML = `<img height='25' src='../jpg/cart.png' alt='Comprar'> ${quantity}`
     counter.value = "1"
+
+    console.log(product)
+    console.log(cart)
+    console.log(item)
 }
 
     /* let cart = JSON.parse(localStorage.getItem("cart"));
