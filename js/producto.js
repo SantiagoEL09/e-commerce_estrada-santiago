@@ -23,7 +23,7 @@ if (productFilter){
                             <button class="btn btn-dark" type="button" onclick="increaseItems()">+</button>
                         </div>
                         <p class="message"></p>
-                        <button class="btn btn-primary" onclick="addItems()">Agregar al Carrito</button>` : `
+                        <button class="btn btn-primary" onclick="addItems()"><span class="material-symbols-outlined">shopping_cart</span>Agregar al Carrito</button>` : `
                         <button class="login" onclick="location.href='./login.html'">Iniciar sesión para comprar</button>`
                     }
                 </div>
@@ -34,54 +34,83 @@ if (productFilter){
 
 const counter = document.querySelector("#counter")
 
-    function increaseItems() {
-
+function increaseItems() {
         /* const productId = Number(window.location.search.split("=")[1]);
         const productFilter = data.find((product) => product.id === productId); */
     
-        if (counter.value < productFilter.stock){
-            counter.value = Number(counter.value) + 1;
-        } 
+    if (counter.value < productFilter.stock){
+        counter.value = Number(counter.value) + 1;
+    } 
         /* Falta condiciones */
-    }  
+}  
     
-    function decreaseItems() {
+function decreaseItems() {
 
-        if (counter.value > 1){
-            counter.value = Number(counter.value) - 1;
-        } 
+    if (counter.value > 1){
+        counter.value = Number(counter.value) - 1;
+    } 
     /* Falta condiciones */
-    }
+}
     
 function addItems() {
-    let cart = JSON.parse(localStorage.getItem("cart"))
+    function add(){
+        let cart = JSON.parse(localStorage.getItem("cart"))
 
-const idProduct = Number(window.location.search.split("=")[1])
-const product = data.find(item => item.id === idProduct)
-const existedId = cart.some(item => item.product.id === idProduct)
+    const idProduct = Number(window.location.search.split("=")[1])
+    const product = data.find(item => item.id === idProduct)
+    const existedId = cart.some(item => item.product.id === idProduct)
 
-if (existedId) {
-    cart = cart.map(item => {
-        if (item.product.id === idProduct) {
-            return { ...item, quantity: item.quantity + Number(counter.value)}
-          }  else {
-            return item
+    if (existedId) {
+        cart = cart.map(item => {
+            if (item.product.id === idProduct) {
+                return { ...item, quantity: item.quantity + Number(counter.value)}
+            }  else {
+                return item
+                }
+        })
+    } else {
+        cart.push({ product: product, quantity: Number(counter.value)})
+    }
+        localStorage.setItem("cart", JSON.stringify(cart))
+        let quantity = cart.reduce((acumulado, actual) => acumulado + actual.quantity, 0)
+        localStorage.setItem("quantity", quantity)
+        const quantityTag = document.querySelector("#quantity")
+        quantityTag.innerHTML = `<img height='25' src='../jpg/cart.png' alt='Comprar'> ${quantity}`
+        counter.value = "1"
+
+        Toastify({
+            text: `Agregaste ${productFilter.title} correctamente al carrito`,
+            className: "add-cart",
+            style: {
+              background: "linear-gradient(to right, rgba(1, 1, 103, 0.5), #333)",
             }
-    })
-} else {
-    cart.push({ product: product, quantity: Number(counter.value)})
+          }).showToast();
+    }
+    
+    Swal.fire({
+        title: "Confirma: ",
+        text: `¿Quieres agregar ${productFilter.title} al carrito? `,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, quiero comprarlo",
+        cancelButtonText: "No, seguré mirando"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: `Agregamos ${productFilter.title} al carrito`,
+            icon: "success"
+            
+          });
+          add()
+        }
+      });
 }
-    localStorage.setItem("cart", JSON.stringify(cart))
-    let quantity = cart.reduce((acumulado, actual) => acumulado + actual.quantity, 0)
-    localStorage.setItem("quantity", quantity)
-    const quantityTag = document.querySelector("#quantity")
-    quantityTag.innerHTML = `<img height='25' src='../jpg/cart.png' alt='Comprar'> ${quantity}`
-    counter.value = "1"
 
-    console.log(product)
-    console.log(cart)
-    console.log(item)
-}
+
+
+
 
     /* let cart = JSON.parse(localStorage.getItem("cart"));
     const productId = Number(window.location.search.split("=")[1]);
@@ -112,8 +141,6 @@ if (existedId) {
     console.log(productFilter)
   
     console.log(productFilter.id) */
-
-    
     /* let cart = JSON.parse(localStorage.getItem("cart"))
 
     let idExisted = data.some((product) => product.id === productId);
@@ -138,8 +165,6 @@ if (existedId) {
 
     console.log(productFilter.id)
  */
-    
-
 /* class productos {
     constructor (titulo, detalle, precio, stock, imagen) {
         this.titulo = titulo;

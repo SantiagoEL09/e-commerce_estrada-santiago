@@ -20,7 +20,7 @@ let menu = []
     }; 
     
     /* Revisar metodos Arrays, que otros metodos aparte del "slice" se pueden usar */
-navLeft.innerHTML = menu.slice(0, 3).join(" ");
+navLeft.innerHTML = `${menu[0]}  ${menu[1]} ${menu[2]}`;
 localStorage.getItem("email") ? navRight.innerHTML = `
 ${menu[3].split("@")[0]}  ${menu[5]} <span onclick="logout()" id="logout"> Cerrar Sesión </span>`
   : navRight.innerHTML = menu[4];
