@@ -8,6 +8,7 @@ const resetButton = document.querySelector("#resetProducts");
 const allButton = document.querySelector("#all");
 const categoryButtons = document.querySelectorAll(".categoryButton");
 const section = document.querySelector("section");
+/* const loading = document.querySelector(".loading"); */
 
 function arrayProduct() {
   let arrayCards = data.map((product) => `
@@ -20,7 +21,18 @@ function arrayProduct() {
           </div>
         </div>`)
 section.innerHTML = arrayCards.join("");
-}arrayProduct()
+}/* arrayProduct() */
+
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("ok")
+    }, 5000)
+      
+    
+  }
+)
+
+promise.then(() => arrayProduct(data))
 
 
 /* BUSCADOR Y CATEGORIAS */

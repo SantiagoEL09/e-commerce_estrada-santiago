@@ -267,8 +267,35 @@ h1 {
   color: #888;
 }
 
+#loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Color de fondo del contenedor */
+}
 
+.loading {
+  width: 150px;
+  height: 150px;
+  border: 20px solid #f3f3f3;
+  border-top: 20px solid #3498db;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  margin-bottom: 15px; /* Espacio entre elementos */
+  box-shadow: 0 5px 8px rgba(1, 1, 103, 0.5); /* Sombra */
+}
 
+.material-symbols-outlined {
+  font-size: 36px;
+  margin-bottom: 15px;
+  box-shadow: 0 5px 8px rgba(1, 1, 103, 0.5); /* Sombra */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .btn {
   display: inline-flex;
