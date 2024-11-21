@@ -45,6 +45,9 @@ function getCart(cards) {
      cardSection.innerHTML = arrayCards.join("");
 }getCart(JSON.parse(localStorage.getItem("cart")))
 
+function redirection(){
+    window.location.href = "index.html"
+}
 
 function total(cards) {
     let cartTotal = document.querySelector("#cartTotal")
@@ -60,6 +63,20 @@ function clearCart() {
     localStorage.setItem("cart", JSON.stringify([]))
     getCart([])
     total([])
+    localStorage.setItem("quantity", 0)
+
+    /* Swal.fire({
+        title: "Felicitaciones!!",
+        text: `Gracias ${recursos.user.split("@")[0]}. Hemos registrado tu orden #${data.id}`
+      }); */
+
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("ok")
+        }, 3500)  
+      }
+    )
+    promise.then(() => redirection())   
 }
 
 function removeItem(id) {
@@ -75,3 +92,34 @@ function removeItem(id) {
     /* const quantityTag = document.querySelector("#quantity")
     quantityTag.innerText = quantity */
 }
+
+function checkout(){
+    const recursos = {
+        user: localStorage.getItem("email"),
+        item: JSON.parse(localStorage.getItem("cart"))
+    }
+
+    fetch("https://673e3b430118dbfe860a9839.mockapi.io/orders", {
+        method: "POST",
+        body: JSON.stringify(recursos),
+        }
+    )
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        console.log("hola")
+        Swal.fire({
+            title: "Felicitaciones!!",
+            text: `Gracias ${recursos.user.split("@")[0]}. Hemos registrado tu orden #${data.id}`
+          });
+          clearCart()
+    })
+    .catch(() => {
+        Swal.fire({
+            title: "Ha ocurrido un error",
+            text: `${recursos.user.split("@")[0]} intentalo de nuevo`
+          });
+    })
+    /* console.log(recursos) */
+}
+

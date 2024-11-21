@@ -26,13 +26,10 @@ section.innerHTML = arrayCards.join("");
 const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve("ok")
-    }, 5000)
-      
-    
+    }, 0o500)  
   }
 )
-
-promise.then(() => arrayProduct(data))
+promise.then(() => arrayProduct())
 
 
 /* BUSCADOR Y CATEGORIAS */
@@ -99,7 +96,7 @@ section.innerHTML = arrayCards.join("");
 
 searchButton.addEventListener("click", searchProduct);
 resetButton.addEventListener("click", resetInput);
-allButton.addEventListener("click", resetInput)
+/* allButton.addEventListener("click", resetInput) */
 
 for (let i in categoryButtons){
   categoryButtons[i].addEventListener("click", (event) => {

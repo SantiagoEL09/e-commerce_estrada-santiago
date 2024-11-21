@@ -17,7 +17,7 @@ let menu = []
                 ${item.name}</a>
             </li>`
         )
-    }; 
+    };
     
     /* Revisar metodos Arrays, que otros metodos aparte del "slice" se pueden usar */
 navLeft.innerHTML = `${menu[0]}  ${menu[1]} ${menu[2]}`;

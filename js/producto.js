@@ -40,8 +40,7 @@ function increaseItems() {
     
     if (counter.value < productFilter.stock){
         counter.value = Number(counter.value) + 1;
-    } 
-        /* Falta condiciones */
+    }
 }  
     
 function decreaseItems() {
@@ -49,7 +48,6 @@ function decreaseItems() {
     if (counter.value > 1){
         counter.value = Number(counter.value) - 1;
     } 
-    /* Falta condiciones */
 }
     
 function addItems() {
@@ -83,7 +81,8 @@ function addItems() {
             className: "add-cart",
             style: {
               background: "linear-gradient(to right, rgba(1, 1, 103, 0.5), #333)",
-            }
+            },
+            duration: 2000
           }).showToast();
     }
     
@@ -100,14 +99,88 @@ function addItems() {
         if (result.isConfirmed) {
           Swal.fire({
             title: `Agregamos ${productFilter.title} al carrito`,
-            icon: "success"
-            
+            icon: "success"            
           });
           add()
         }
       });
 }
 
+const searchProduct = () => {
+    const filterData = data.filter(
+      (product) => product.title.toLowerCase() === input.value.toLowerCase());
+  
+      if (filterData.length === 1) {
+        arrayCards = filterData.map((filter) => {
+          const brandElement = filter.category === "Juegos" ? "" : `<p>Marca: ${filter.brand}</p>`;
+          return `
+          <div class="card">
+              <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
+              <div class="card-body">
+                <h4 class="card-title">${filter.title}</h4>
+                <h5>USD $${filter.price}</h5>
+                <p>Stock disponible: ${filter.stock}</p>
+                ${brandElement}
+                <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>  
+              </div>
+          </div>`;
+        }
+      );
+          section.innerHTML = arrayCards.join("");
+      } else {
+        section.innerHTML = `No encontramos el producto: ${input.value}. Porfavor ingresa un nombre de producto valido`;
+      }    
+  }
+  
+  const resetInput = () => {
+    input.value = "";
+    let arrayCards = data.map((product) => `
+          <div class="card">
+            <img src="${product.img}" class="card-img-top" alt="logoPrincipal ${product.title}">
+            <div class="card-body">
+              <h4 class="card-title">${product.title}</h4>  
+              <p>Categoría: ${product.category}</p>
+              <a href="producto.html?prod=${product.id}" class="btn btn-primary">Ver más</a>  
+            </div>
+          </div>`)
+  section.innerHTML = arrayCards.join("");
+  }
+  
+  const filterCategory = (category) => {
+    const filterData = data.filter(
+      (product) => product.category === category)
+        arrayCards = filterData.map((filter) => {
+          const brandElement = filter.category === "Juegos" ? "" : `<p>Marca: ${filter.brand}</p>`;
+          return `
+            <div class="card">
+              <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
+              <div class="card-body">
+                <h4 class="card-title">${filter.title}</h4>
+                <p>Categoría: ${filter.category}</p>
+                ${brandElement}
+                <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>
+              </div>
+            </div>
+          `;
+        }
+      );
+  section.innerHTML = arrayCards.join("");
+  };
+  
+  searchButton.addEventListener("click", searchProduct);
+  resetButton.addEventListener("click", resetInput);
+  allButton.addEventListener("click", resetInput)
+  
+  for (let i in categoryButtons){
+    categoryButtons[i].addEventListener("click", (event) => {
+      const category = event.target.getAttribute("value");
+      filterCategory(category);
+    })
+  }
+
+function back(){
+    window.location.href = "index.html"
+}
 
 
 
