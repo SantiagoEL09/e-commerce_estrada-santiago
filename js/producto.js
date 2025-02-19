@@ -3,6 +3,7 @@ const productId = Number(window.location.search.split("=")[1]);
 const productFilter = data.find((product) => product.id === productId);
 const section = document.querySelector("section")
 const message = document.querySelector(".message")
+
   
 if (productFilter){
     let etiquetas = `
@@ -106,83 +107,9 @@ function addItems() {
       });
 }
 
-const searchProduct = () => {
-    const filterData = data.filter(
-      (product) => product.title.toLowerCase() === input.value.toLowerCase());
-  
-      if (filterData.length === 1) {
-        arrayCards = filterData.map((filter) => {
-          const brandElement = filter.category === "Juegos" ? "" : `<p>Marca: ${filter.brand}</p>`;
-          return `
-          <div class="card">
-              <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
-              <div class="card-body">
-                <h4 class="card-title">${filter.title}</h4>
-                <h5>USD $${filter.price}</h5>
-                <p>Stock disponible: ${filter.stock}</p>
-                ${brandElement}
-                <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>  
-              </div>
-          </div>`;
-        }
-      );
-          section.innerHTML = arrayCards.join("");
-      } else {
-        section.innerHTML = `No encontramos el producto: ${input.value}. Porfavor ingresa un nombre de producto valido`;
-      }    
-  }
-  
-  const resetInput = () => {
-    input.value = "";
-    let arrayCards = data.map((product) => `
-          <div class="card">
-            <img src="${product.img}" class="card-img-top" alt="logoPrincipal ${product.title}">
-            <div class="card-body">
-              <h4 class="card-title">${product.title}</h4>  
-              <p>Categoría: ${product.category}</p>
-              <a href="producto.html?prod=${product.id}" class="btn btn-primary">Ver más</a>  
-            </div>
-          </div>`)
-  section.innerHTML = arrayCards.join("");
-  }
-  
-  const filterCategory = (category) => {
-    const filterData = data.filter(
-      (product) => product.category === category)
-        arrayCards = filterData.map((filter) => {
-          const brandElement = filter.category === "Juegos" ? "" : `<p>Marca: ${filter.brand}</p>`;
-          return `
-            <div class="card">
-              <img src="${filter.img}" class="card-img-top" alt="logoPrincipal ${filter.title}">
-              <div class="card-body">
-                <h4 class="card-title">${filter.title}</h4>
-                <p>Categoría: ${filter.category}</p>
-                ${brandElement}
-                <a href="producto.html?prod=${filter.id}" class="btn btn-primary">Ver más</a>
-              </div>
-            </div>
-          `;
-        }
-      );
-  section.innerHTML = arrayCards.join("");
-  };
-  
-  searchButton.addEventListener("click", searchProduct);
-  resetButton.addEventListener("click", resetInput);
-  allButton.addEventListener("click", resetInput)
-  
-  for (let i in categoryButtons){
-    categoryButtons[i].addEventListener("click", (event) => {
-      const category = event.target.getAttribute("value");
-      filterCategory(category);
-    })
-  }
-
-function back(){
-    window.location.href = "index.html"
+function back() {
+    window.location.href = ("../html/index.html")
 }
-
-
 
 
     /* let cart = JSON.parse(localStorage.getItem("cart"));

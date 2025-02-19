@@ -21,7 +21,7 @@ nav {
     justify-content: space-between; /* Distribuye elementos a los extremos */
     padding: 15px;/* Espacio interno del navbar */
   }
-  .navbar ul {
+  .navbar li {
     list-style: none;
     margin: 0;
     padding: 0;
